@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Clasificación de imágenes</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.10.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet@2.1.0"></script>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      padding: 2rem;
+    }
+    img {
+      max-width: 300px;
+      margin-top: 1rem;
+    }
+    .result {
+      margin-top: 1rem;
+      font-size: 1.2rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>Clasificador de imágenes</h1>
+  <input type="file" id="imageUpload" accept="image/*">
+  <br>
+  <img id="preview" />
+  <div class="result" id="prediction">Esperando imagen...</div>
+
+  <script>
+    let model;
+
+    async function loadModel() {
+      model = await mobilenet.load();
+      console.log("Modelo cargado");
+    }
+
+    async function predictImage(imgElement) {
+      const predictions = await model.classify(imgElement);
+      const pred = predictions[0];
+      document.getElementById('prediction').innerText =
+        `Predicción: ${pred.className} (confianza: ${(pred.probability * 100).toFixed(2)}%)`;
+    }
+
+    document.getElementById('imageUpload').addEventListener('change', (event) => {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const imgElement = document.getElementById('preview');
+      imgElement.src = URL.createObjectURL(file);
+      imgElement.onload = () => predictImage(imgElement);
+    });
+
+    loadModel();
+  </script>
+</body>
+</html>
