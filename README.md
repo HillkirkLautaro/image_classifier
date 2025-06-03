@@ -4,9 +4,10 @@ Este proyecto permite subir una imagen y clasificarla directamente en el navegad
 
 ## Cómo usar
 
-1. Subí una imagen (por ejemplo, una foto de un gato o perro).
-2. El modelo te dirá qué objeto detecta.
-3. Corre 100% en el navegador (no necesita backend ni cuentas).
+1. Ingresa a 👉 [clasificadordeimagene.netlify.app](https://clasificadordeimagene.netlify.app)
+2. Subí una imagen (por ejemplo, una foto de un gato o perro).
+3. El modelo te dirá qué objeto detecta.
+4. Corre 100% en el navegador.
 
 ## Tecnologías
 
