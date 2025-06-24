@@ -1,43 +1,33 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Clasificación de imágenes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clasificador de Imágenes</title>
+
+  <!-- Fuente moderna -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Estilos externos -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- TensorFlow.js y modelo MobileNet -->
   <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.10.0"></script>
   <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet@2.1.0"></script>
 </head>
 <body>
-  <h1>Clasificador de imágenes</h1>
-  <input type="file" id="imageUpload" accept="image/*">
-  <br>
-  <img id="preview" />
-  <div class="result" id="prediction">Esperando imagen...</div>
 
-  <script>
-    let model;
+  <main>
+    <h1>Clasificador de Imágenes</h1>
 
-    async function loadModel() {
-      model = await mobilenet.load();
-      console.log("Modelo cargado");
-    }
+    <label for="imageUpload" class="visually-hidden">Seleccioná una imagen</label>
+    <input type="file" id="imageUpload" accept="image/*">
 
-    async function predictImage(imgElement) {
-      const predictions = await model.classify(imgElement);
-      const pred = predictions[0];
-      document.getElementById('prediction').innerText =
-        `Predicción: ${pred.className} (confianza: ${(pred.probability * 100).toFixed(2)}%)`;
-    }
+    <img id="preview" alt="Vista previa de la imagen seleccionada" />
 
-    document.getElementById('imageUpload').addEventListener('change', (event) => {
-      const file = event.target.files[0];
-      if (!file) return;
+    <div class="result" id="prediction">Esperando imagen...</div>
+  </main>
 
-      const imgElement = document.getElementById('preview');
-      imgElement.src = URL.createObjectURL(file);
-      imgElement.onload = () => predictImage(imgElement);
-    });
-
-    loadModel();
-  </script>
+  <script src="app.js" defer></script>
 </body>
 </html>

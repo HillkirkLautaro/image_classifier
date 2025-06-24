@@ -1,28 +1,84 @@
-<link rel="stylesheet" href="styles.css">
-<style>
-  body {
-    font-family: sans-serif;
-    text-align: center;
-    padding: 2rem;
-  }
-  img {
-    max-width: 300px;
-    margin-top: 1rem;
-  }
-  .result {
-    margin-top: 1rem;
-    font-size: 1.2rem;
-  }
+/* Fondo general */
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #e0e0e0; /* gris suave */
+  color: #333;
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
 
-  #imageUpload {
-    margin-top: 20px;
-    padding: 10px;
-    border: 2px solid #007bff;
-    border-radius: 5px;
-    cursor: pointer;
+/* Cuadro central */
+main {
+  background-color: white;
+  padding: 3.5rem 4rem;  /* más espacio interno */
+  border-radius: 12px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  max-width: 650px;     /* más ancho */
+  width: 100%;
+  text-align: center;
+}
+
+/* Título */
+h1 {
+  color: #0d6efd;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Input para subir imagen */
+#imageUpload {
+  margin-top: 20px;
+  padding: 10px 16px;
+  border: 2px solid #0d6efd;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #fff;
+  transition: all 0.3s ease;
+}
+
+#imageUpload:hover {
+  background-color: #0d6efd;
+  color: white;
+}
+
+/* Imagen */
+img {
+  max-width: 100%;
+  width: 300px;
+  margin-top: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Resultado */
+.result {
+  margin-top: 1.5rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #198754;
+  background-color: #eafaf1;
+  display: inline-block;
+  padding: 0.75rem 1.25rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+  main {
+    padding: 1.5rem;
   }
 
   h1 {
-    color: #007bff;
+    font-size: 1.5rem;
   }
-</style>
+
+  .result {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+  }
+}
