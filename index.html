@@ -1,33 +1,53 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Clasificador de Imágenes</title>
 
   <!-- Fuente moderna -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+    rel="stylesheet"
+  />
 
   <!-- Estilos externos -->
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css" />
 
   <!-- TensorFlow.js y modelo MobileNet -->
   <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.10.0"></script>
   <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet@2.1.0"></script>
 </head>
 <body>
-
   <main>
     <h1>Clasificador de Imágenes</h1>
+    <p>Seleccioná una imagen para que el modelo la clasifique</p>
 
     <label for="imageUpload" class="visually-hidden">Seleccioná una imagen</label>
-    <input type="file" id="imageUpload" accept="image/*">
-
-    <img id="preview" alt="Vista previa de la imagen seleccionada" />
+    <input type="file" id="imageUpload" accept="image/*" disabled />
+    <div id="loadingIndicator" role="status" aria-live="polite" style="margin-top: 1rem;">
+      Cargando modelo, por favor espere...
+    </div>
+    <img id="preview" alt="Vista previa de la imagen seleccionada" src=""/>
 
     <div class="result" id="prediction">Esperando imagen...</div>
+    <section style="margin-top: 2rem;">
+      <h2>Imagenes de prueba</h2>
+      <div class="test-images" id="testImagesContainer" style="pointer-events:none; opacity:0.5;">
+        <img src="images/bicicleta.jpg" alt="Imagen de prueba 1" class="test-image" data-src="images/bicicleta.jpg" />
+        <img src="images/perro.jpg" alt="Imagen de prueba 2" class="test-image" data-src="images/perro.jpg" />
+        <img src="images/gato.jpg" alt="Imagen de prueba 3" class="test-image" data-src="images/gato.jpg" />
+      </div>
+      <p id="testImagesText">Seleccioná un modelo</p>
+      <div id="modelSelector" style="margin-bottom: 1rem;">
+        <button type="button" data-model="mobilenet" disabled>MobileNet</button>
+        <button type="button" data-model="mobilenet">MobileNet</button>
+      </div>
+    </section>
   </main>
 
-  <script src="app.js" defer></script>
+
+  <!-- Script principal, tipo módulo para importar traducciones -->
+  <script type="module" src="app.js" defer></script>
 </body>
 </html>
