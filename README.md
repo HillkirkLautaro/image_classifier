@@ -15,3 +15,4 @@ Este proyecto permite subir una imagen y clasificarla directamente en el navegad
 - JavaScript
 - [TensorFlow.js](https://www.tensorflow.org/js)
 - Modelo MobileNet v2
+- CSS
